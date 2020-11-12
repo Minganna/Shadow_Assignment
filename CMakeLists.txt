@@ -1,13 +1,14 @@
 cmake_minimum_required(VERSION 2.6)
+set(CMAKE_GENERATOR_PLATFORM Win32)
 project(Marco_Minganna_Graphics_and_Computational_Programming)
 	
 include_directories(
+	src
   	${PROJECT_SOURCE_DIR}/contrib/msvc-windows-x86/ASSIMP/include
 	${PROJECT_SOURCE_DIR}/contrib/msvc-windows-x86/GLEW/include
 	${PROJECT_SOURCE_DIR}/contrib/msvc-windows-x86/GLFW/include
 	${PROJECT_SOURCE_DIR}/contrib/msvc-windows-x86/GLM
 )
-add_subdirectory(${PROJECT_SOURCE_DIR}/contrib/msvc-windows-x86/bin)
 
 link_directories(
   	${PROJECT_SOURCE_DIR}/contrib/msvc-windows-x86/GLEW/lib/Release/Win32
@@ -51,5 +52,4 @@ add_executable(shadowMapping
   
 )
 
-
-target_link_libraries(shadowMapping glew32 assimp)
+target_link_libraries(shadowMapping glew32 glfw3 opengl32 assimp-vc140-mt)
