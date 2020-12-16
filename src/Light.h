@@ -5,7 +5,7 @@
 #include <glm\gtc\matrix_transform.hpp>
 
 #include "ShadowMap.h"
-
+///base class for light sources
 class Light
 {
 public:

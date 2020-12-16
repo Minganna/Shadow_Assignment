@@ -5,11 +5,12 @@
 #include <GL\glew.h>
 #include <GLFW\glfw3.h>
 
+///this class is responsable for the creation of the window and storing the related variables.
 class MyWindow
 {
 public:
 	MyWindow();
-
+	///class constructor
 	MyWindow(GLint windowWidth, GLint windowHeight);
 
 	int Initialise();
@@ -19,12 +20,14 @@ public:
 
 	bool getShouldClose() { return glfwWindowShouldClose(mainWindow); }
 
+	/// function used to get the keys in the keyboard
+	/// \param keys array containing all the key of the keyboard
 	bool* getsKeys() { return keys; }
 	GLfloat getXChange();
 	GLfloat getYChange();
 
 	void swapBuffers() { glfwSwapBuffers(mainWindow); }
-
+	///class deconstructor 
 	~MyWindow();
 
 private:
@@ -32,6 +35,7 @@ private:
 
 	GLint width, height;
 	GLint bufferWidth, bufferHeight;
+
 
 	bool keys[1024];
 

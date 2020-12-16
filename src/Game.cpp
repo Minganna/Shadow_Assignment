@@ -1,10 +1,13 @@
-// This project was created following the tutorial: Computer Graphics with Modern OpenGl and C++ 
+// This project was created with the help of the following tutorial: Computer Graphics with Modern OpenGl and C++ 
 // Link to the Course: https://www.udemy.com/course/graphics-with-modern-opengl/
 // The tutorial provided the theory of the topics and then help on implementation of the discussed topic
 
 #define STB_IMAGE_IMPLEMENTATION
 
 #include "Game.h"
+
+#include <chrono>
+#include<ctime>
 
 
 Game::Game()
@@ -219,6 +222,8 @@ void Game::OmniShadowMapPass(PointLight* light)
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
 
+
+
 void Game::RenderPass(glm::mat4 projectionMatrix, glm::mat4 viewMatrix)
 {
 	shaderList[0].UseShader();
@@ -260,7 +265,8 @@ void Game::RenderPass(glm::mat4 projectionMatrix, glm::mat4 viewMatrix)
 }
 void Game::Start()
 {
-
+	bool checkTime = true;
+	auto start = std::chrono::system_clock::now();
 
 	mainWindow = MyWindow(1366, 768);
 	mainWindow.Initialise();
@@ -289,7 +295,7 @@ void Game::Start()
 		0.1f, 0.6f,
 		0.0f, -15.0f, -10.0f);
 
-	pointLights[1] = PointLight(1024, 1024,
+pointLights[1] = PointLight(1024, 1024,
 		0.1f, 100.0f,
 		0.0f, 0.0f, 1.0f,
 		0.0f, 0.4f,
@@ -328,9 +334,9 @@ void Game::Start()
 	glm::mat4 projection = glm::perspective(glm::radians(60.0f), (GLfloat)mainWindow.getBufferWidth() / mainWindow.getBufferHeight(), 0.1f, 100.0f);
 
 
-
 	while (!mainWindow.getShouldClose())
 	{
+		
 		GLfloat now = glfwGetTime(); 
 		deltaTime = now - lastTime;
 		lastTime = now;
@@ -358,10 +364,27 @@ void Game::Start()
 		}
 		RenderPass(projection, camera.calculateViewMatrix());
 
+
+
 		glUseProgram(0);
 
 		mainWindow.swapBuffers();
+		if (checkTime)
+		{
+			auto end = std::chrono::system_clock::now();
+
+			std::chrono::duration<double> elapsed_seconds = end - start;
+			std::time_t end_time = std::chrono::system_clock::to_time_t(end);
+
+			std::cout << "finished computation at " << std::ctime(&end_time)<<"number of lights on scene: "<<spotLightCount+pointLightCount+1<<std::endl
+				<< "elapsed time: " << elapsed_seconds.count() << "s\n";
+			checkTime = false;
+		}
+		
 	}
+
+
+
 }
 
 Game::~Game()

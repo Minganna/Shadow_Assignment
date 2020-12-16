@@ -1,4 +1,4 @@
-// This project was created following the tutorial: Computer Graphics with Modern OpenGl and C++ 
+// This project was created with the help of the following tutorial: Computer Graphics with Modern OpenGl and C++ 
 // Link to the Course: https://www.udemy.com/course/graphics-with-modern-opengl/
 // The tutorial provided the theory of the topics and then help on implementation of the discussed topic
 

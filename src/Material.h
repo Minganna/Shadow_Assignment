@@ -1,7 +1,7 @@
 #pragma once
 
 #include <GL\glew.h>
-
+///this class is responsable to apply material to a model.
 class Material
 {
 public:

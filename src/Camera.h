@@ -6,7 +6,7 @@
 #include <glm\gtc\matrix_transform.hpp>
 
 #include <GLFW\glfw3.h>
-
+///This class is responsable for the camera movements. 
 class Camera
 {
 public:
@@ -30,7 +30,9 @@ private:
 	glm::vec3 right;
 	glm::vec3 worldUp;
 
+	//rotation on the y axes
 	GLfloat yaw;
+	//rotation on the x axes
 	GLfloat pitch;
 
 	GLfloat moveSpeed;

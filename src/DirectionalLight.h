@@ -1,6 +1,6 @@
 #pragma once
 #include "Light.h"
-
+///this class inherets from the Light class, this class is responsable for the Directional lights (Sun)
 class DirectionalLight :
 	public Light
 {

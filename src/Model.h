@@ -14,6 +14,7 @@
 #include "Mesh.h"
 #include "Texture.h"
 
+///This class is used to import a model using the library "assimp -  https://github.com/assimp/assimp"
 class Model
 {
 public:
